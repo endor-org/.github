@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Version/tag of github/safe-settings repo to use:
-      SAFE_SETTINGS_VERSION: 2.1.13
+      SAFE_SETTINGS_VERSION: 2.1.16
 
       # Path on GHA runner box where safe-settings code downloaded to:
       SAFE_SETTINGS_CODE_DIR: ${{ github.workspace }}/.safe-settings-code
@@ -34,5 +34,6 @@ jobs:
           PRIVATE_KEY: ${{ secrets.SAFE_SETTINGS_PRIVATE_KEY }}
           GITHUB_CLIENT_ID: ${{ vars.SAFE_SETTINGS_GITHUB_CLIENT_ID }}
           GITHUB_CLIENT_SECRET: ${{ secrets.SAFE_SETTINGS_GITHUB_CLIENT_SECRET }}
+          ADMIN_REPO: .github
           CONFIG_PATH: safe-settings
           DEPLOYMENT_CONFIG_FILE: ${{ github.workspace }}/safe-settings/deployment-settings.yml
