@@ -1,0 +1,7 @@
+# This settings can be used to create repo level settings
+repository:
+  # Name of the repo
+  name: dave
+  organization: endor-org
+  # Create the repo if it is not existing
+  force_create: true
