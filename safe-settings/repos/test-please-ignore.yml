@@ -2,6 +2,5 @@ repository:
   # Create the repo if doesn't exist
   force_create: true
   name: test-please-ignore
-  private: true
   organization: endor-org
   description: "test please ignore"
