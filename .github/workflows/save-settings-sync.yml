@@ -1,5 +1,6 @@
 name: Safe Settings Sync
 on:
+  pull_request:
   schedule:
     - cron: "0 */4 * * *"
   workflow_dispatch: {}
