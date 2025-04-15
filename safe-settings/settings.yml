@@ -1,8 +1,4 @@
-
+# save-settings/settings.yml
 repository:
-  # A short description of the repository that will show up on GitHub
-  description: description of the repo
-
-  # Create an initial commit with empty README.
-  # Keep this set to true in most cases since many of the policies below cannot be implemented on bare repos
-  auto_init: true
+  topics:
+    - foobar
