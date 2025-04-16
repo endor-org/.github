@@ -30,6 +30,19 @@ jobs:
       - uses: actions/setup-node@v4
       - run: npm install
         working-directory: ${{ env.SAFE_SETTINGS_CODE_DIR }}
+      - name: Set no-op mode flag
+        run: |
+          echo "FULL_SYNC_NOP=false" >> $GITHUB_ENV
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "FULL_SYNC_NOP=true" >> $GITHUB_ENV
+          fi
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            if [[ "${{ inputs.NOP }}" != "" ]]; then
+              echo "FULL_SYNC_NOP=${{ inputs.NOP }}" >> $GITHUB_ENV
+            fi
+          fi
       - run: npm run full-sync
         working-directory: ${{ env.SAFE_SETTINGS_CODE_DIR }}
         env:
@@ -42,3 +55,4 @@ jobs:
           CONFIG_PATH: safe-settings
           DEPLOYMENT_CONFIG_FILE: ${{ github.workspace }}/safe-settings/deployment-settings.yml
           LOG_LEVEL: info
+          FULL_SYNC_NOP: ${{ env.FULL_SYNC_NOP }}
