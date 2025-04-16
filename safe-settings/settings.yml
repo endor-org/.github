@@ -33,10 +33,6 @@ labels:
       color: "#336699"
       description: New functionality.
 
-teams:
-  - name: core
-    permission: admin
-
 branches:
   - name: default
     protection:
