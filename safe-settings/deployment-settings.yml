@@ -1,3 +1,2 @@
-# save-settings/deployment-settings.yml
 restrictedRepos:
-  include: ['^test-please-ignore$', 'rust-ci-test']
+  exclude: ['^\.github$']
