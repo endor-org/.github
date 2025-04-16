@@ -1,27 +1,62 @@
-# save-settings/settings.yml
+# This settings file can be used to create org-level settings
+
+# This is the settings that need to be applied to all repositories in the org
+# See https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-an-organization-repository for all available settings for a repository
 repository:
+  auto_init: true
+  security:
+    enableVulnerabilityAlerts: true
+    enableAutomatedSecurityFixes: true
+  has_issues: false
+  has_projects: false
+  has_wiki: false
+  default_branch: main
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: false
+  allow_auto_merge: true
+  delete_branch_on_merge: true
+  allow_update_branch: true
 
-  rulesets:
-    - name: Default
-      target: branch
-      enforcement: active
 
-      conditions:
-        ref_name:
-          include:
-            - ~DEFAULT_BRANCH
-          exclude: []
+# The following attributes are applied to any repo within the org
+# So if a repo is not listed above is created or edited
+# The app will apply the following settings to it
+labels:
+  # Labels: define labels for Issues and Pull Requests
+  include:
+    - name: bug
+      color: CC0000
+      description: An issue with the system
+    - name: feature
+      # If including a `#`, make sure to wrap it with quotes!
+      color: "#336699"
+      description: New functionality.
 
-      rules:
-        - type: deletion
-        - type: non_fast_forward # prevents force pushes
+teams:
+  - name: core
+    permission: admin
 
-    - name: Pull Requests
-      target: branch
-      enforcement: active
+branches:
+  - name: default
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: true
+        require_last_push_approval: false
+      required_status_checks:
+        strict: true
+        # Required. The list of status checks to require in order to merge into this branch
+        contexts: []
+      enforce_admins: true
+      restrictions:
+        apps: []
+        users: []
+        teams: []
 
-      conditions:
-        ref_name:
-          include:
-            - ~DEFAULT_BRANCH
-          exclude: []
+
+autolinks:
+  - key_prefix: "SAB-"
+    url_template: "https://unibuddy.atlassian.net/browse/SAB-<num>"
+    is_alphanumeric: false

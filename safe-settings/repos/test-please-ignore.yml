@@ -1,5 +1,9 @@
 repository:
   force_create: true
   name: test-please-ignore
-  organization: endor-org
   description: "test please ignore"
+  homepage: https://example.github.io/
+  topics:
+    - new-topic
+    - another-topic
+  archived: false
