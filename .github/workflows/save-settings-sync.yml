@@ -54,5 +54,5 @@ jobs:
           ADMIN_REPO: .github
           CONFIG_PATH: safe-settings
           DEPLOYMENT_CONFIG_FILE: ${{ github.workspace }}/safe-settings/deployment-settings.yml
-          LOG_LEVEL: debug
+          LOG_LEVEL: info
           FULL_SYNC_NOP: ${{ env.FULL_SYNC_NOP }}
