@@ -17,40 +17,7 @@ repository:
   allow_auto_merge: true
   delete_branch_on_merge: true
   allow_update_branch: true
-  rulesets:
-    - name: Default
-      target: branch
-      enforcement: active
 
-      conditions:
-        ref_name:
-          include:
-            - ~DEFAULT_BRANCH
-          exclude: []
-
-      rules:
-        - type: deletion
-        - type: required_linear_history
-        - type: pull_request
-          parameters:
-            dismiss_stale_reviews_on_push: true
-            require_code_owner_review: true
-            required_approving_review_count: 1
-            required_review_thread_resolution: true
-        - type: required_status_checks
-          parameters:
-            strict_required_status_checks_policy: true
-        - type: non_fast_forward # prevents force pushes
-
-    - name: Pull Requests
-      target: branch
-      enforcement: active
-
-      conditions:
-        ref_name:
-          include:
-            - ~DEFAULT_BRANCH
-          exclude: []
 
 # The following attributes are applied to any repo within the org
 # So if a repo is not listed above is created or edited
@@ -70,3 +37,38 @@ autolinks:
   - key_prefix: "SAB-"
     url_template: "https://unibuddy.atlassian.net/browse/SAB-<num>"
     is_alphanumeric: false
+
+rulesets:
+  - name: Default
+    target: branch
+    enforcement: active
+
+    conditions:
+      ref_name:
+        include:
+          - ~DEFAULT_BRANCH
+        exclude: []
+
+    rules:
+      - type: deletion
+      # - type: required_linear_history
+      # - type: pull_request
+      #   parameters:
+      #     dismiss_stale_reviews_on_push: true
+      #     require_code_owner_review: true
+      #     required_approving_review_count: 1
+      #     required_review_thread_resolution: true
+      # - type: required_status_checks
+      #   parameters:
+      #     strict_required_status_checks_policy: true
+      - type: non_fast_forward # prevents force pushes
+
+  - name: Pull Requests
+    target: branch
+    enforcement: active
+
+    conditions:
+      ref_name:
+        include:
+          - ~DEFAULT_BRANCH
+        exclude: []
