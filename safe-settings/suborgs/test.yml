@@ -29,13 +29,3 @@ rulesets:
         parameters:
           strict_required_status_checks_policy: true
       - type: non_fast_forward # prevents force pushes
-
-  - name: Pull Requests
-    target: branch
-    enforcement: active
-
-    conditions:
-      ref_name:
-        include:
-          - ~DEFAULT_BRANCH
-        exclude: []
