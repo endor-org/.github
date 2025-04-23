@@ -41,7 +41,7 @@ autolinks:
 rulesets:
   - name: Default
     target: branch
-    enforcement: active
+    # enforcement: active
 
     conditions:
       ref_name:
@@ -61,14 +61,14 @@ rulesets:
       # - type: required_status_checks
       #   parameters:
       #     strict_required_status_checks_policy: true
-      - type: non_fast_forward # prevents force pushes
+      # - type: non_fast_forward # prevents force pushes
 
-  - name: Pull Requests
-    target: branch
-    enforcement: active
+  # - name: Pull Requests
+  #   target: branch
+  #   enforcement: active
 
-    conditions:
-      ref_name:
-        include:
-          - ~DEFAULT_BRANCH
-        exclude: []
+  #   conditions:
+  #     ref_name:
+  #       include:
+  #         - ~DEFAULT_BRANCH
+  #       exclude: []
