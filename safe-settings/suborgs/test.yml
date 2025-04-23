@@ -25,9 +25,4 @@ rulesets:
           require_last_push_approval: true
           required_approving_review_count: 1
           required_review_thread_resolution: true
-      - type: required_status_checks
-        parameters:
-          strict_required_status_checks_policy: true
-          required_status_checks:
-            - context: "{{EXTERNALLY_DEFINED}}"
       - type: non_fast_forward # prevents force pushes
